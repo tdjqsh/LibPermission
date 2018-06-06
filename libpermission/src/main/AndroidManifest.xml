@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.ouym.libpermission">
+
+    <application>
+        <activity android:name=".RequestPermissionActivity"
+            android:theme="@android:style/Theme.Translucent">
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kcode.permissionslib">
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true">
+
+        <activity
+            android:name=".main.RequestActivity"
+            android:theme="@style/MyStyle"></activity>
+    </application>
+
+</manifest>
