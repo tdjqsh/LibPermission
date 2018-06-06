@@ -9,4 +9,5 @@
   ![image](https://github.com/tdjqsh/LibPermission/blob/master/images/1.png)
   <br>
   4：在需要用到权限申请调用上写上权限检查的注解<br>
-  
+  ![image](https://github.com/tdjqsh/LibPermission/blob/master/images/3.png)
+  5：很重要的，所有需要权限申请的activity，继承LPBaseActivity，建议下一个基类来统一下
