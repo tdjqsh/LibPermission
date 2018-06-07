@@ -12,7 +12,8 @@
   ![image](https://github.com/tdjqsh/LibPermission/blob/master/images/3.png)
   5：很重要的，所有需要权限申请的activity，继承LPBaseActivity，建议下一个基类来统一下<br>
   ![image](https://github.com/tdjqsh/LibPermission/blob/master/images/2.png)<br>
-  6：也是最重要的一点，我没有在fragment中测试使用，根据经验，<b>会报错。</b><br>
+  6：能够在fragment中使用（fragment的装载activity得继承LPBaseActivity）。其他地方使用<b>会报错。</b><br>
+  7：授权拒绝处理上比较粗糙
   
   <br><br><br><br>
   #<u>一次尝试，写的也不是很好。欢迎大侠大佬大神大哥小妹交流：tdqjsh@163.com</u>
