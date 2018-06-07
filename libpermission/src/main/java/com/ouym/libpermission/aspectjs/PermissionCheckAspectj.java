@@ -1,8 +1,10 @@
 package com.ouym.libpermission.aspectjs;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Build;
 
+import com.ouym.libpermission.LPBaseActivity;
 import com.ouym.libpermission.RequestPermission;
 import com.ouym.libpermission.Utils;
 import com.ouym.libpermission.annotations.PermissionCheck;
@@ -37,7 +39,25 @@ public class PermissionCheckAspectj {
 
         PermissionCheck annotation = method.getAnnotation(PermissionCheck.class);
         String[] permissions = annotation.value();
-        Context target = (Context) joinPoint.getTarget();
+
+        Object object = joinPoint.getTarget();
+        if (!Fragment.class.isInstance(object)
+                && !android.support.v4.app.Fragment.class.isInstance(object)
+                && LPBaseActivity.class.isInstance(object)) {
+            throw new RuntimeException("PermissionCheck注解只能用在V4-Fragment和Activity上");
+        }
+
+        if (object instanceof Fragment ){
+            object = ((Fragment) object).getActivity();
+        } else if (object instanceof android.support.v4.app.Fragment){
+            object = ((android.support.v4.app.Fragment) object).getActivity();
+        }
+
+        if (!(object instanceof LPBaseActivity)){
+            throw new RuntimeException("请继承LPBaseActivity");
+        }
+
+        Context target = (Context) object;
         String[] permissionNotGranted = Utils.getPermissionNotGranted(target, permissions);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && permissionNotGranted.length > 0){
